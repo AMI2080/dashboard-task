@@ -1,0 +1,55 @@
+.char-container {
+  border-radius: 1.17rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  padding: 1.25rem;
+  background-color: #fff;
+
+  .chart-header {
+    display: grid;
+    grid-template-columns: 1fr 30rem;
+    border-bottom: 1px solid #E0E7F1;
+    height: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    .chart-title {
+      font-family: Montserrat;
+      font-size: .75rem;
+      font-weight: bold;
+      color: #3D5161;
+      letter-spacing: 1.2px;
+    }
+
+    .chart-options {
+      text-align: right;
+
+      .option {
+        display: inline-block;
+        margin-left: .25rem;
+        margin-right: .25rem;
+
+        span {
+          font-family: Montserrat;
+          font-size: .75rem;
+          font-weight: bold;
+          color: #3D5161;
+          letter-spacing: 0;
+          border-bottom: .2rem solid transparent;
+          padding: .75rem .5rem;
+        }
+
+        &.active span,
+        &:not(.active) span:hover {
+          color: #FF7F5C;
+          border-bottom-color: #FF7F5C;
+        }
+
+        &:not(.active) span:hover {
+          cursor: pointer;
+          background-color: #F9F5F3;
+        }
+      }
+    }
+  }
+}

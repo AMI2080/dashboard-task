@@ -1,0 +1,44 @@
+<div class="header">
+  <div class="header-left">
+    <div class="left-item">
+      <span class="dot-icon-container">
+        <span class="dot-icon"></span>
+      </span>
+      <img src="../../assets/img/gas-station-svgrepo-com.svg" alt="gas station">
+      <span class="text-large">2/3</span>
+      <span class="text-small">Monitored Stations</span>
+    </div>
+    <div class="left-item">
+      <span class="dot-icon-container">
+        <span class="dot-icon"></span>
+      </span>
+      <span style="color: #3D5161;">
+        <i class="fa-solid fa-arrow-rotate-right fa-rotate-90 fa-2x"></i>
+      </span>
+      <span class="text-large">20s</span>
+      <span class="text-small">Last Update</span>
+    </div>
+  </div>
+  <div class="header-middle">
+    <div class="period-options">
+      <span class="option" *ngFor="let option of filterOptions" [ngClass]="{'active': option == selectedFilter}"
+        (click)="filterWith(option)">
+        <span class="btn-name">{{ option | uppercase}}</span>
+      </span>
+    </div>
+  </div>
+  <div class="header-right">
+    <mat-form-field class="start">
+      <mat-label><b>Start</b> date - time</mat-label>
+      <input matInput [matDatepicker]="startDate" [formControl]="startingDate">
+      <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
+      <mat-datepicker #startDate></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="end">
+      <mat-label><b>End</b> date - time</mat-label>
+      <input matInput [matDatepicker]="endDate" [formControl]="endingDate">
+      <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
+      <mat-datepicker #endDate></mat-datepicker>
+    </mat-form-field>
+  </div>
+</div>

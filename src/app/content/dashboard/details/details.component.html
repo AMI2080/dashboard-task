@@ -1,0 +1,45 @@
+<div class="details">
+  <div class="dash-cards">
+    <div class="row">
+      <div class="col-lg-6 col-xl-3" *ngFor="let card of cards">
+        <div class="dash-card" [ngClass]="{'high-light': card.heighLight}">
+          <div class="header">
+            <span *ngIf="card.formatValue">
+              {{ card.value | number }}
+            </span>
+            <span *ngIf="!card.formatValue">
+              {{ card.value }}
+            </span>
+            <span class="currency" *ngIf="card.unit">{{ card.unit }}</span>
+            <span class="down" *ngIf="card.unitDown">{{ card.unitDown }}</span>
+            <span class="up" *ngIf="card.unitUp">{{ card.unitUp }}</span>
+          </div>
+          <div class="title">
+            {{ card.title }}
+          </div>
+          <div class="progress-value" [ngClass]="{'progress-decreased': card.progress.sign === 'down','progress-increased': card.progress.sign === 'up'}">
+            <span class="sign"></span>
+            {{ card.progress.value }}
+            {{ card.progress.unit }}
+            <span class="down" *ngIf="card.progress.unitDown">{{ card.progress.unitDown }}</span>
+            <span class="up" *ngIf="card.progress.unitUp">{{ card.progress.unitUp }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="details-options">
+    <a routerLinkActive="active" routerLink="/dashboard/graph" class="option">
+      <i class="fa-solid fa-chart-simple"></i>
+      <span class="btn-name">Graph</span>
+    </a>
+    <a routerLinkActive="active" routerLink="/dashboard/list" class="option">
+      <i class="fa-solid fa-list"></i>
+      <span class="btn-name">List</span>
+    </a>
+  </div>
+  <div style="clear: both;"></div>
+  <ng-scrollbar style="height: 400px" class="scrollbar">
+    <router-outlet></router-outlet>
+  </ng-scrollbar>
+</div>

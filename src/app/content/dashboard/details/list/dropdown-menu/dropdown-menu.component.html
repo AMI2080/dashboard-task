@@ -1,0 +1,9 @@
+<div class="options-dialog" [ngClass]="{show: show}">
+  <div class="dialog-title">View Properties:</div>
+  <div class="dialog-body">
+    <span *ngFor="let property of properties;let pid = index">
+      <input class="checkbox-flip" type="checkbox" id="prop_{{cid}}_{{pid}}" [checked]="property.checked" />
+      <label class="option" for="prop_{{cid}}_{{pid}}"><span></span>{{ property.name }}</label>
+    </span>
+  </div>
+</div>

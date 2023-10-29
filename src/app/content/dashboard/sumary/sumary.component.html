@@ -1,0 +1,19 @@
+<div class="summary">
+  <div class="title">Hourly Sales</div>
+  <app-radar-chart></app-radar-chart>
+  <div class="title sb-station">Sales by Station</div>
+  <div class="stations">
+    <div class="station" [ngClass]="{nm: !!station.other}" *ngFor="let station of stations">
+      <div class="station-details">
+        <img src="../../../assets/img/gas-station-svgrepo-com.svg" class="logo">
+        <div class="station-name">{{ station.name }}</div>
+        <div class="station-sales">
+          {{ station.sales | number }}{{ station.unit }}{{ station.other }}<sup>{{ station.unitSymple }}</sup>
+        </div>
+      </div>
+      <div class="progress-holder">
+        <div class="progress" [style.width]="(station.progress ? station.progress : 0) + '%'"></div>
+      </div>
+    </div>
+  </div>
+</div>

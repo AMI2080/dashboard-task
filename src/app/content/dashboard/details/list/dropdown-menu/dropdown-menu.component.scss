@@ -1,0 +1,134 @@
+.options-dialog {
+  position: absolute;
+  display: none;
+  top: calc(100% - .75rem);
+  right: calc(100% - .75rem);
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 1px 2px 4px #999;
+  width: 35rem;
+
+  .dialog-title {
+    margin: 1rem;
+    font-family: 'Nunito Sans';
+    font-size: .75rem;
+    color: #3D5161;
+    border-bottom: 0.1rem solid #E0E7F1;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    font-weight: bold;
+  }
+
+  .dialog-body {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: .5rem;
+    font-family: 'Nunito Sans';
+    font-size: .75rem;
+    line-height: .75rem;
+    font-weight: bold;
+    color: #3D5161;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    label {
+      margin-bottom: .5rem;
+    }
+  }
+
+  &.show {
+    display: block;
+  }
+}
+
+$border-color: #FF7F5C;
+$checkbox-size: 1rem;
+$checkedbox-size: 1.2rem;
+
+@keyframes pull {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 1.2rem;
+  }
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+.checkbox-flip,
+.checkbox-pop,
+.checkbox-pull,
+.checkbox-spin {
+  display: none;
+}
+
+.checkbox-flip+label span,
+.checkbox-pop+label span,
+.checkbox-pull+label span,
+.checkbox-spin+label span {
+  display: inline-block;
+  width: 25px;
+  height: 19px;
+  margin: 0 5px -4px 0;
+
+  /*layout relationship between check and label*/
+  &:before,
+  &:after {
+    border-radius: 25%;
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: $checkbox-size;
+    height: $checkbox-size;
+    background: transparent;
+    border: 2px solid $border-color;
+  }
+
+  &:after {
+    z-index: 0;
+    border: none;
+  }
+}
+
+.checkbox-flip:checked+label span {
+  &:before {
+    background: $border-color;
+  }
+}
+
+.checkbox-pop:checked+label span {
+  &:before {
+    animation: pop .3s ease;
+    z-index: 100;
+    background: $border-color;
+  }
+}
+
+.checkbox-pull:checked+label span {
+  &:after {
+    width: $checkedbox-size;
+    height: $checkedbox-size;
+    background: $border-color;
+    animation: pull .4s linear;
+  }
+}
+
+.checkbox-spin:checked+label span {
+  &:before {
+    background: $border-color;
+  }
+}
